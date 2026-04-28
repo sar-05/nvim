@@ -268,6 +268,7 @@ if vim.fn.executable 'git' == 1 then
   vim.pack.add {
     -- { src = 'https://github.com/rose-pine/neovim', name = 'rose-pine' },
     { src = 'https://github.com/vague-theme/vague.nvim' },
+    { src = 'https://github.com/nvim-tree/nvim-web-devicons.git' },
     { src = 'https://github.com/nvim-treesitter/nvim-treesitter' },
     { src = 'https://github.com/mason-org/mason.nvim.git' },
     { src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim.git' },
@@ -475,6 +476,7 @@ require('lazydev').setup()
 vim.lsp.enable 'bashls'
 
 vim.g.mapleader = ' '
+require('nvim-web-devicons').setup {}
 if vim.fn.executable 'fzf' == 1 then
   vim.keymap.set('n', '<leader><leader>', function()
     require('fzf-lua').files()
