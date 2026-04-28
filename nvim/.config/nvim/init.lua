@@ -299,13 +299,15 @@ require('mason').setup()
 require('mason-tool-installer').setup {
   ensure_installed = {
     'bash-language-server',
+    'ruff',
+    'basedpyright',
     'shellcheck',
     'shfmt',
     'clangd',
     'clang-format',
     'marksman',
     'mdslw',
-    'mdsf',
+    'mdsf', -- requires rust
     {
       'markdownlint-cli2',
       condition = function()
@@ -458,6 +460,8 @@ require('conform').setup {
 vim.lsp.enable 'clangd'
 vim.lsp.enable 'marksman'
 vim.lsp.enable 'texlab'
+vim.lsp.enable 'basedpyright'
+vim.lsp.enable 'ruff'
 -- for use with lazydev, lua-language-server config has to be named lua_ls
 -- https://github.com/folke/lazydev.nvim/discussions/28
 vim.lsp.enable 'lua_ls'
