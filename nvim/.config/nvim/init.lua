@@ -15,7 +15,7 @@ vim.o.splitbelow = true
 vim.o.list = true
 vim.o.breakindent = true
 vim.o.splitkeep = 'screen'
--- vim.o.wrap = false
+vim.o.wrap = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- Disable optional providers
