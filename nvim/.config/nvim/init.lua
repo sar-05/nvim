@@ -147,6 +147,9 @@ vim.api.nvim_create_autocmd('BufWinLeave', {
   end,
 })
 
+-- Do not restore curdir when using mkload, as this conflicts with fzf-lua.
+vim.opt.viewoptions:remove 'curdir'
+
 vim.api.nvim_create_autocmd('BufWinEnter', {
   desc = 'Load view when entering a buffer',
   callback = function(ev)
