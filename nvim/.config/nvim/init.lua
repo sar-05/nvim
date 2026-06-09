@@ -194,6 +194,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
     vim.keymap.set('n', 'gd', function()
       vim.lsp.buf.definition()
     end, { buffer = ev.buf, desc = 'Go to definition' })
+    vim.keymap.set('n', 'gD', function()
+      vim.lsp.buf.definition()
+    end, { buffer = ev.buf, desc = 'Go to declararion' })
   end,
 })
 
@@ -490,9 +493,12 @@ vim.lsp.enable 'bashls'
 vim.g.mapleader = ' '
 require('nvim-web-devicons').setup {}
 if vim.fn.executable 'fzf' == 1 then
-  vim.keymap.set('n', '<leader><leader>', function()
+  vim.keymap.set('n', '<leader>f', function()
     require('fzf-lua').files()
   end, { desc = 'Search files' })
+  vim.keymap.set('n', '<leader><leader>', function()
+    require('fzf-lua').buffers()
+  end, { desc = 'Search buffers' })
 else
   vim.notify('Unable to setup fzf-lua, missing fzf binary', vim.log.levels.WARN)
 end
