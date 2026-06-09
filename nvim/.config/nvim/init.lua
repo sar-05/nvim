@@ -323,7 +323,6 @@ require('mason-tool-installer').setup {
     'clangd',
     'clang-format',
     'marksman',
-    'mdslw',
     'mdsf', -- requires rust
     {
       'markdownlint-cli2',
@@ -432,7 +431,7 @@ require('conform').setup {
     c = { 'clang-format' },
     sh = { 'shfmt' },
     lua = { 'stylua' },
-    markdown = { 'mdsf', 'mdslw' },
+    markdown = { 'mdsf' },
   },
   -- shortcut to the autocmd to call format on save
   -- These options will be passed to conform.format()
