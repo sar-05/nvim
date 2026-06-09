@@ -292,6 +292,8 @@ if vim.fn.executable 'git' == 1 then
     { src = 'https://github.com/stevearc/conform.nvim.git' },
     { src = 'https://github.com/folke/lazydev.nvim.git' },
     { src = 'https://github.com/ibhagwan/fzf-lua.git' },
+    { src = 'https://github.com/rmagatti/goto-preview.git' },
+    { src = 'https://github.com/rmagatti/logger.nvim.git' },
   }
 else
   vim.notify('Unable to install plugins, no git binary found', vim.log.levels.WARN)
@@ -502,3 +504,6 @@ if vim.fn.executable 'fzf' == 1 then
 else
   vim.notify('Unable to setup fzf-lua, missing fzf binary', vim.log.levels.WARN)
 end
+
+-- goto-preview
+require('goto-preview').setup { default_mappings = true }
