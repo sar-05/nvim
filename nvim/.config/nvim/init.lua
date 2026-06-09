@@ -76,6 +76,16 @@ vim.api.nvim_create_autocmd('FileType', {
   end,
 })
 
+local colorcol_group = vim.api.nvim_create_augroup('colorcolumn', { clear = true })
+vim.api.nvim_create_autocmd('FileType', {
+  group = colorcol_group,
+  pattern = { 'markdown' },
+  desc = 'Turn on colorcolumn at 80 characters',
+  callback = function()
+    vim.o.colorcolumn = '80'
+  end,
+})
+
 vim.api.nvim_create_autocmd('FileType', {
   group = tabs_group,
   pattern = { 'c' },
