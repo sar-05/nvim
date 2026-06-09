@@ -1,11 +1,11 @@
 {
   "plugins": {
     "conform.nvim": {
-      "rev": "dca1a190aa85f9065979ef35802fb77131911106",
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim.git"
     },
     "fzf-lua": {
-      "rev": "64590411e6cf3d603d1e1bdad3a3d051f2f5a91a",
+      "rev": "988416cc782dfe28bff3f0da9b8c943b236cd86a",
       "src": "https://github.com/ibhagwan/fzf-lua.git"
     },
     "goto-preview": {
@@ -25,11 +25,11 @@
       "src": "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim.git"
     },
     "mason.nvim": {
-      "rev": "cb8445f8ce85d957416c106b780efd51c6298f89",
+      "rev": "16ba83bfc8a25f52bb545134f5bee082b195c460",
       "src": "https://github.com/mason-org/mason.nvim.git"
     },
     "nvim-lint": {
-      "rev": "eab58b48eb11d7745c11c505e0f3057165902461",
+      "rev": "99cbc3ca8a76845fca50e496be7212bebf907dd3",
       "src": "https://github.com/mfussenegger/nvim-lint.git"
     },
     "nvim-treesitter": {
@@ -37,11 +37,11 @@
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-web-devicons": {
-      "rev": "4fc505ac7bd7692824a142e96e5f529c133862f8",
+      "rev": "dfbfaa967a6f7ec50789bead7ef87e336c1fa63c",
       "src": "https://github.com/nvim-tree/nvim-web-devicons.git"
     },
     "vague.nvim": {
-      "rev": "fd58046b9d64259d9785e4aeb6d6f494c6943cad",
+      "rev": "788697064264bed8390b52ca2ac9906a96712120",
       "src": "https://github.com/vague-theme/vague.nvim"
     }
   }
