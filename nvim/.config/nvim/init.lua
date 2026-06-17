@@ -294,6 +294,7 @@ if vim.fn.executable 'git' == 1 then
     { src = 'https://github.com/ibhagwan/fzf-lua.git' },
     { src = 'https://github.com/rmagatti/goto-preview.git' },
     { src = 'https://github.com/rmagatti/logger.nvim.git' },
+    { src = 'https://github.com/zk-org/zk-nvim.git' },
   }
 else
   vim.notify('Unable to install plugins, no git binary found', vim.log.levels.WARN)
@@ -486,6 +487,7 @@ vim.lsp.enable 'marksman'
 vim.lsp.enable 'texlab'
 vim.lsp.enable 'basedpyright'
 vim.lsp.enable 'ruff'
+vim.lsp.enable 'zk'
 -- for use with lazydev, lua-language-server config has to be named lua_ls
 -- https://github.com/folke/lazydev.nvim/discussions/28
 vim.lsp.enable 'lua_ls'
@@ -507,3 +509,6 @@ end
 
 -- goto-preview
 require('goto-preview').setup { default_mappings = true }
+require('zk').setup {
+  picker = 'fzf_lua',
+}

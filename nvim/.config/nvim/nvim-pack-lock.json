@@ -43,6 +43,10 @@
     "vague.nvim": {
       "rev": "788697064264bed8390b52ca2ac9906a96712120",
       "src": "https://github.com/vague-theme/vague.nvim"
+    },
+    "zk-nvim": {
+      "rev": "bc3b39374b25fad977cecc936588cb060f15a773",
+      "src": "https://github.com/zk-org/zk-nvim.git"
     }
   }
 }
