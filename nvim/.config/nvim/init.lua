@@ -17,6 +17,7 @@ vim.o.breakindent = true
 vim.o.splitkeep = 'screen'
 vim.o.wrap = false
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.o.laststatus = 3
 
 -- Disable optional providers
 vim.g.loaded_node_provider = 0
