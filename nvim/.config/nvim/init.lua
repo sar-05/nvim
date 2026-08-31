@@ -40,53 +40,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
--- Set tabs to two spaces in markdown files
-vim.api.nvim_create_autocmd("FileType", {
-	group = tabs_group,
-	pattern = { "lua", "sh", "markdown" },
-	desc = "Set tabs to 2 spaces",
-	callback = function()
-		vim.bo.shiftwidth = 2
-		vim.bo.tabstop = 2
-		vim.bo.softtabstop = 2
-	end,
-})
-
--- Enable a line at 80 chars in markdown files
-local colorcol_group = vim.api.nvim_create_augroup("colorcolumn", { clear = true })
-vim.api.nvim_create_autocmd("FileType", {
-	group = colorcol_group,
-	pattern = { "markdown" },
-	desc = "Turn on colorcolumn at 80 characters",
-	callback = function()
-		vim.o.colorcolumn = "80"
-	end,
-})
-
--- Use tabs in C files
-vim.api.nvim_create_autocmd("FileType", {
-	group = tabs_group,
-	pattern = { "c" },
-	desc = "Use tabs instead of spaces for C files",
-	callback = function()
-		vim.o.shiftwidth = 8
-		vim.o.tabstop = 8
-		vim.o.softtabstop = 8
-		vim.o.expandtab = false
-	end,
-})
-
--- enable spell check
-vim.api.nvim_create_autocmd("FileType", {
-	group = vim.api.nvim_create_augroup("configure-spellcheck", { clear = true }),
-	pattern = { "markdown", "gitcommit" },
-	desc = "Enable spellcheck",
-	callback = function()
-		vim.opt_local.spelllang = { "en_us", "es_mx" }
-		vim.o.spell = true
-	end,
-})
-
 -- Save buffer view
 vim.api.nvim_create_autocmd("BufWinLeave", {
 	desc = "Save view when leaving a buffer",
