@@ -9,14 +9,14 @@ vim.o.shiftwidth = 4
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.expandtab = true
-vim.o.signcolumn = 'yes'
+vim.o.signcolumn = "yes"
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.list = true
 vim.o.breakindent = true
-vim.o.splitkeep = 'screen'
+vim.o.splitkeep = "screen"
 vim.o.wrap = false
-vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+vim.opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 vim.o.laststatus = 3
 vim.g.netrw_altfile = 1
 
@@ -28,118 +28,117 @@ vim.g.loaded_ruby_provider = 0
 
 -- unify nvim and system clipboard
 vim.schedule(function()
-  vim.o.clipboard = 'unnamedplus'
+	vim.o.clipboard = "unnamedplus"
 end)
 
 -- highlight yanked text
-vim.api.nvim_create_autocmd('TextYankPost', {
-  desc = 'Highlight when yanking (copying) text',
-  group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-  callback = function()
-    vim.hl.on_yank()
-  end,
+vim.api.nvim_create_autocmd("TextYankPost", {
+	desc = "Highlight when yanking (copying) text",
+	group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
 })
 
 -- Set tabs to two spaces in markdown files
-vim.api.nvim_create_autocmd('FileType', {
-  group = tabs_group,
-  pattern = { 'lua', 'sh', 'markdown' },
-  desc = 'Set tabs to 2 spaces',
-  callback = function()
-    vim.bo.shiftwidth = 2
-    vim.bo.tabstop = 2
-    vim.bo.softtabstop = 2
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+	group = tabs_group,
+	pattern = { "lua", "sh", "markdown" },
+	desc = "Set tabs to 2 spaces",
+	callback = function()
+		vim.bo.shiftwidth = 2
+		vim.bo.tabstop = 2
+		vim.bo.softtabstop = 2
+	end,
 })
 
 -- Enable a line at 80 chars in markdown files
-local colorcol_group = vim.api.nvim_create_augroup('colorcolumn', { clear = true })
-vim.api.nvim_create_autocmd('FileType', {
-  group = colorcol_group,
-  pattern = { 'markdown' },
-  desc = 'Turn on colorcolumn at 80 characters',
-  callback = function()
-    vim.o.colorcolumn = '80'
-  end,
+local colorcol_group = vim.api.nvim_create_augroup("colorcolumn", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+	group = colorcol_group,
+	pattern = { "markdown" },
+	desc = "Turn on colorcolumn at 80 characters",
+	callback = function()
+		vim.o.colorcolumn = "80"
+	end,
 })
 
 -- Use tabs in C files
-vim.api.nvim_create_autocmd('FileType', {
-  group = tabs_group,
-  pattern = { 'c' },
-  desc = 'Use tabs instead of spaces for C files',
-  callback = function()
-    vim.o.shiftwidth = 8
-    vim.o.tabstop = 8
-    vim.o.softtabstop = 8
-    vim.o.expandtab = false
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+	group = tabs_group,
+	pattern = { "c" },
+	desc = "Use tabs instead of spaces for C files",
+	callback = function()
+		vim.o.shiftwidth = 8
+		vim.o.tabstop = 8
+		vim.o.softtabstop = 8
+		vim.o.expandtab = false
+	end,
 })
 
 -- enable spell check
-vim.api.nvim_create_autocmd('FileType', {
-  group = vim.api.nvim_create_augroup('configure-spellcheck', { clear = true }),
-  pattern = { 'markdown', 'gitcommit' },
-  desc = 'Enable spellcheck',
-  callback = function()
-    vim.opt_local.spelllang = { 'en_us', 'es_mx' }
-    vim.o.spell = true
-  end,
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("configure-spellcheck", { clear = true }),
+	pattern = { "markdown", "gitcommit" },
+	desc = "Enable spellcheck",
+	callback = function()
+		vim.opt_local.spelllang = { "en_us", "es_mx" }
+		vim.o.spell = true
+	end,
 })
 
 -- Save buffer view
-vim.api.nvim_create_autocmd('BufWinLeave', {
-  desc = 'Save view when leaving a buffer',
-  callback = function(ev)
-    local buf = ev.buf
-    if
-      --[[Check for appropiate buffers:
+vim.api.nvim_create_autocmd("BufWinLeave", {
+	desc = "Save view when leaving a buffer",
+	callback = function(ev)
+		local buf = ev.buf
+		if
+			--[[Check for appropiate buffers:
       valid buffer: the buffer is in the buffer list
       non-empty name: the buffer name isn't an empty string
       empty type: only non-modifiable buffers like help buffers have types ]]
-      --
-      vim.api.nvim_buf_is_valid(buf)
-      and vim.api.nvim_buf_get_name(buf) ~= ''
-      and vim.api.nvim_get_option_value('buftype', { buf = buf }) == ''
-    then
-      vim.api.nvim_buf_call(buf, function()
-        vim.cmd 'silent! mkview'
-      end)
-    end
-  end,
+			--
+			vim.api.nvim_buf_is_valid(buf)
+			and vim.api.nvim_buf_get_name(buf) ~= ""
+			and vim.api.nvim_get_option_value("buftype", { buf = buf }) == ""
+		then
+			vim.api.nvim_buf_call(buf, function()
+				vim.cmd("silent! mkview")
+			end)
+		end
+	end,
 })
-
 
 -- Do not restore curdir when using mkload, as this conflicts with fzf-lua.
-vim.opt.viewoptions:remove 'curdir'
+vim.opt.viewoptions:remove("curdir")
 
 -- Load view if it exit for the buffer
-vim.api.nvim_create_autocmd('BufWinEnter', {
-  desc = 'Load view when entering a buffer',
-  callback = function(ev)
-    local buf = ev.buf
-    if
-      vim.api.nvim_buf_is_valid(buf)
-      and vim.api.nvim_buf_get_name(buf) ~= ''
-      and vim.api.nvim_get_option_value('buftype', { buf = buf }) == ''
-    then
-      vim.api.nvim_buf_call(buf, function()
-        vim.cmd 'silent! loadview'
-      end)
-    end
-  end,
+vim.api.nvim_create_autocmd("BufWinEnter", {
+	desc = "Load view when entering a buffer",
+	callback = function(ev)
+		local buf = ev.buf
+		if
+			vim.api.nvim_buf_is_valid(buf)
+			and vim.api.nvim_buf_get_name(buf) ~= ""
+			and vim.api.nvim_get_option_value("buftype", { buf = buf }) == ""
+		then
+			vim.api.nvim_buf_call(buf, function()
+				vim.cmd("silent! loadview")
+			end)
+		end
+	end,
 })
 
-if vim.fn.executable 'git' == 1 then
-  vim.pack.add {
-    { src = 'https://github.com/vague-theme/vague.nvim' },
-  }
+if vim.fn.executable("git") == 1 then
+	vim.pack.add({
+		{ src = "https://github.com/vague-theme/vague.nvim" },
+	})
 else
-  vim.notify('Unable to install plugins, no git binary found', vim.log.levels.WARN)
+	vim.notify("Unable to install plugins, no git binary found", vim.log.levels.WARN)
 end
 
 -- set colorscheme
-local colorscheme_status, err = pcall(vim.cmd.colorscheme, 'vague')
+local colorscheme_status, err = pcall(vim.cmd.colorscheme, "vague")
 if not colorscheme_status then
-  vim.notify('Unable to set colorscheme: ' .. err, vim.log.levels.ERROR)
+	vim.notify("Unable to set colorscheme: " .. err, vim.log.levels.ERROR)
 end
