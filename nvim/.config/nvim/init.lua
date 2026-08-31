@@ -26,11 +26,6 @@ vim.g.loaded_perl_provider = 0
 vim.g.loaded_python3_provider = 0
 vim.g.loaded_ruby_provider = 0
 
--- unify nvim and system clipboard
-vim.schedule(function()
-	vim.o.clipboard = "unnamedplus"
-end)
-
 -- highlight yanked text
 vim.api.nvim_create_autocmd("TextYankPost", {
 	desc = "Highlight when yanking (copying) text",
